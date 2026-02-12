@@ -1,0 +1,53 @@
+{
+  "target": "app-internal",
+  "generated_at": "2026-02-11T00:00:00Z",
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Reflected XSS pada parameter q",
+      "severity": "high",
+      "location": "/search?q=",
+      "evidence": "payload __XSS_TEST__ ter-echo tanpa encoding",
+      "cwe": "CWE-79",
+      "tags": [
+        "xss",
+        "web"
+      ]
+    },
+    {
+      "id": "F-002",
+      "title": "SQL Injection indikasi pada endpoint /v1/orders",
+      "severity": "critical",
+      "location": "/v1/orders?id=",
+      "evidence": "parameter memicu syntax error MySQL",
+      "cwe": "CWE-89",
+      "tags": [
+        "sql",
+        "injection",
+        "api"
+      ]
+    },
+    {
+      "id": "F-003",
+      "title": "Verbose error stacktrace ke client",
+      "severity": "medium",
+      "location": "/api/login",
+      "evidence": "stacktrace tampil ke client",
+      "tags": [
+        "misconfig",
+        "logging"
+      ]
+    },
+    {
+      "id": "F-004",
+      "title": "Komponen outdated: library rentan",
+      "severity": "low",
+      "location": "package.json",
+      "evidence": "dependensi sudah EOL",
+      "cwe": "CWE-1104",
+      "tags": [
+        "supply-chain"
+      ]
+    }
+  ]
+}

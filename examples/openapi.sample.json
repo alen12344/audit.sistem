@@ -1,0 +1,39 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Internal API",
+    "version": "1.0.0"
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/orders": {
+      "get": {
+        "operationId": "listOrders",
+        "summary": "List orders"
+      },
+      "post": {
+        "operationId": "createOrder",
+        "summary": "Create order"
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "health",
+        "summary": "Health check",
+        "security": []
+      }
+    }
+  }
+}

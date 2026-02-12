@@ -1,0 +1,6 @@
+rules:
+  - id: FP-001
+    reason: "Temuan lama dari environment staging"
+    cwe: "CWE-79"
+    title_regex: "xss"
+    location_regex: "/staging"

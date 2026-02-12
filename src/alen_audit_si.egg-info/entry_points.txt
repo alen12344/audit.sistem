@@ -1,0 +1,2 @@
+[console_scripts]
+alen-audit = alen_audit.cli:main

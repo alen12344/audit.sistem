@@ -1,0 +1,92 @@
+# 👁️ Alen Audit Sistem Informasi (alen-audit-si)
+
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Defensive](https://img.shields.io/badge/Security-Defensive%20Audit-green)
+![OWASP](https://img.shields.io/badge/OWASP-Auto%20Mapping-orange)
+![CWE](https://img.shields.io/badge/CWE-Mapping-purple)
+![Dashboard](https://img.shields.io/badge/Chart.js-Dashboard-8A2BE2)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Kali](https://img.shields.io/badge/Tested-Kali%20Linux-black)
+
+Toolkit **defensive** untuk **audit sistem informasi**: **OWASP auto mapping**, **CWE mapping**, **Compliance heatmap**, **Chart.js dashboard**, **Threat modeling**, **API surface analyzer (OpenAPI)**, **anti false positive engine**, dan **HTML report** siap untuk SOC.
+
+> ⚠️ Etika & Safety: Project ini **tidak** melakukan eksploitasi/serangan atau scanning aktif ke website target publik.  
+> Untuk temuan XSS/SQLi/vulnerability, tool ini **mengolah data input** (hasil pentest internal, laporan scanner resmi Anda, log, HAR, OpenAPI, dsb).
+
+---
+
+## ✨ Fitur Utama
+
+- ✅ OWASP Top 10 2021 auto mapping (berdasarkan CWE / classifier offline)
+- ✅ CWE mapping
+- ✅ Compliance Heatmap (ISO 27001 lite + ASVS lite)
+- ✅ Chart.js dashboard (severity & category)
+- ✅ Threat modeling template (STRIDE)
+- ✅ API surface analyzer (OpenAPI/Swagger)
+- ✅ Anti false positive engine (rules YAML)
+- ✅ HTML report + JSON summary (SOC-friendly)
+- ✅ Offline “AI” classifier (rule-based, tanpa internet) untuk label: XSS, SQLi, misconfig, dll
+- ✅ CLI sederhana + banner 👁️ “Alen Audit Sistem Informasi”
+
+---
+
+## 📦 Instalasi (Kali Linux)
+
+```bash
+sudo apt update
+sudo apt install -y python3 python3-venv
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+pip install -e .
+```
+
+---
+
+## 🚀 Quickstart
+
+### 1) Generate report dari findings JSON
+```bash
+alen-audit report   --input examples/findings.sample.json   --outdir out   --project "Audit SI - Internal"   --owner "Alen"
+```
+
+Output:
+- `out/report.html`
+- `out/summary.json`
+- `out/threat_model.md`
+
+### 2) API surface analyzer (OpenAPI) — tanpa scanning
+```bash
+alen-audit api-surface --openapi examples/openapi.sample.json --out out/api_surface.md
+```
+
+### 3) Passive web evidence check (tanpa request ke target)
+Menganalisis file **HAR** / **HTTP response dump** yang sudah Anda punya:
+```bash
+alen-audit web-evidence --har examples/sample.har.json --out out/web_evidence.json
+```
+
+### 4) Anti false positive rules
+```bash
+alen-audit report --input examples/findings.sample.json --suppress config/suppressions.yml --outdir out
+```
+
+---
+
+## 🧩 Format Input Findings
+
+Lihat `examples/findings.sample.json`.
+
+---
+
+## 🧪 Test
+
+```bash
+python -m pytest
+```
+
+---
+
+## 🛡️ License
+MIT - lihat `LICENSE`.

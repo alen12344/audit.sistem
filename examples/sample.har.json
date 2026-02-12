@@ -1,0 +1,23 @@
+{
+  "log": {
+    "entries": [
+      {
+        "request": {
+          "method": "GET",
+          "url": "https://internal.local/search?q=__XSS_TEST__"
+        },
+        "response": {
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "text/html"
+            }
+          ],
+          "content": {
+            "text": "<html>echo __XSS_TEST__</html>"
+          }
+        }
+      }
+    ]
+  }
+}
